@@ -5,7 +5,7 @@ class  App:
     def __init__(self):
         pyxel.init(160,120)
 
-        pyxel.load("mychara.pyxres")
+        pyxel.load("assets/mychara.pyxres")
 
         self.START=False
 
@@ -35,10 +35,10 @@ class  App:
         if pyxel.btnp(pyxel.KEY_Q):
             pyxel.quit()
         
-        if pyxel.btn(pyxel.KEY_SPACE) or pyxel.btn(pyxel.GAMEPAD_1_START):
+        if pyxel.btn(pyxel.KEY_SPACE) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_A):
             self.START=True
         
-        if self.GAMEOVER and (pyxel.btn(pyxel.KEY_ENTER or pyxel.btn(pyxel.GAMEPAD_1_START))):
+        if self.GAMEOVER and (pyxel.btn(pyxel.KEY_ENTER or pyxel.btn(pyxel.GAMEPAD1_BUTTON_A))):
             self.reset()
         
         if not self.START or self.GAMEOVER:
@@ -61,7 +61,7 @@ class  App:
 PUSH ENTER RESTART
 """
             pyxel.text(51,40,MESSAGE,1)
-            pyxel.text(50,40,MESSAGE,10)
+            pyxel.text(50,40,MESSAGE,7)
             return
             
         pyxel.blt(0, 0, 2, 0, 0, 160, 120, 0)
@@ -88,13 +88,13 @@ PUSH ENTER RESTART
 
         if not self.START:
             MESSAGE="PUSH SPACE KEY"
-            pyxel.text(61,50,MESSAGE,7)
-            pyxel.text(60,50,MESSAGE,1)
+            pyxel.text(61,60,MESSAGE,1)
+            pyxel.text(60,60,MESSAGE,7)
             return
 
     def update_player(self):
 
-            if pyxel.btn(pyxel.KEY_SPACE) or pyxel.btn(pyxel.GAMEPAD_1_A):
+            if pyxel.btn(pyxel.KEY_SPACE) or pyxel.btn(pyxel.GAMEPAD1_BUTTON_A):
                 if self.gravity>-self.MAX_GRAVITY:
                     self.gravity=self.gravity-self.POWER
             else:
